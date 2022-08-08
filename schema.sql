@@ -6,7 +6,5 @@ CREATE TABLE animals (
     date_of_birth DATE NOT NULL,
     escape_attempts INTEGER NOT NULL,
     neutered BOOLEAN NOT NULL,
-    weight_kg DECIMAL NOT NULL,
-    species_id INTEGER NOT NULL,
-    owner_id INTEGER NOT NULL
+    weight_kg DECIMAL NOT NULL
 );
