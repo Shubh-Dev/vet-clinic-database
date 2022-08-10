@@ -12,3 +12,20 @@ CREATE TABLE animals (
 -- day-2
 
 ALTER TABLE animals ADD column species VARCHAR(50);
+
+--Day-3
+
+CREATE TABLE owners (id INT GENERATED ALWAYS AS IDENTITY NOT NULL, full_name VARCHAR(100), age INTEGER, PRIMARY KEY(id));
+
+CREATE TABLE species (id INT GENERATED ALWAYS AS IDENTITY NOT NULL, name VARCHAR(100), PRIMARY KEY(id));
+
+ALTER TABLE animals DROP column species;
+
+ALTER TABLE animals ADD column species_id INTEGER;
+
+ALTER TABLE animals ADD CONSTRAINT fk_species FOREIGN KEY (species_id) REFERENCES species(id);
+
+ALTER TABLE animals ADD column owner_id INTEGER;
+
+ALTER TABLE animals ADD CONSTRAINT fk_owner FOREIGN KEY (owner_id) REFERENCES owners(id);
+
