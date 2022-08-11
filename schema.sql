@@ -29,3 +29,26 @@ ALTER TABLE animals ADD column owner_id INTEGER;
 
 ALTER TABLE animals ADD CONSTRAINT fk_owner FOREIGN KEY (owner_id) REFERENCES owners(id);
 
+-- day-4
+
+CREATE TABLE vets(
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(100) NOT NULL,
+    age INTEGER NOT NULL,
+    date_of_graduation DATE NOT NULL
+);
+
+CREATE TABLE specializations (
+    species_id INTEGER,
+    vet_id INTEGER,
+    FOREIGN KEY (species_id) REFERENCES species(id),
+    FOREIGN KEY (vet_id) REFERENCES vets(id)
+);
+
+CREATE TABLE visits (
+    animal_id INTEGER,
+    vet_id INTEGER,
+    date_of_visit DATE,
+    FOREIGN KEY (animal_id) REFERENCES animals(id),
+    FOREIGN KEY (vet_id) REFERENCES vets(id)
+);
