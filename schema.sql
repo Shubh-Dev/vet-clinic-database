@@ -45,10 +45,21 @@ CREATE TABLE specializations (
     FOREIGN KEY (vet_id) REFERENCES vets(id)
 );
 
-CREATE TABLE visits (
+CREATE TABLE visits ( mhyhn  vcd
     animal_id INTEGER,
     vet_id INTEGER,
     date_of_visit DATE,
     FOREIGN KEY (animal_id) REFERENCES animals(id),
     FOREIGN KEY (vet_id) REFERENCES vets(id)
 );
+
+-- Week - 2 Day - 1
+
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+
+CREATE INDEX index_animal_id ON visits (animal_id);
+
+CREATE INDEX index_vet_id ON visits (vet_id ASC NULLS last);
+
+CREATE INDEX index_email ON owners (email ASC NULLS last);
